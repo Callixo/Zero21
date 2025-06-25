@@ -1,0 +1,179 @@
+  /* Corpo da página */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Container principal */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Itens do carrinho */
+.produto {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  border-radius: 1rem;
+  border-style: solid;
+  padding: 10px;
+}
+
+.produto-img {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.produto-img img {
+  width: 50%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.product-details {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.product-details h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.product-price {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.remove-from-cart {
+  background-color: #00afef;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s;
+  margin-top: 20px;
+}
+
+.remove-from-cart:hover {
+  background-color: #00afef;
+}
+
+.center {
+  text-align: center;
+}
+
+.buy-now {
+  background-color: #0084ff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s;
+  margin-top: 20px;
+}
+
+.buy-now:hover {
+  background-color: #0084ff;
+}
+
+
+/* Estilização do footer (rodapé) */
+footer {
+  margin-top: 20px;
+  padding: 20px 0;
+  background-color: #333;
+  color: #fff;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.download-options img {
+  width: 150px;
+  margin: 10px;
+}
+
+.logo-footer h1 {
+  font-size: 36px;
+  margin: 10px 0;
+}
+
+.logo-footer p {
+  max-width: 300px;
+}
+
+.links-footer h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.links-footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.links-footer ul li {
+  margin-bottom: 10px;
+}
+
+hr {
+  border: 1px solid #444;
+  width: 100%;
+}
+
+.copyright {
+  text-align: center;
+  padding: 10px 0;
+  color: #bbb;
+}
+
+#total-price {
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+/* Media Queries */
+@media (max-width: 800px) {
+  .container {
+      padding: 10px;
+  }
+
+  .produto {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .produto-img {
+      margin-right: 0;
+      margin-bottom: 20px;
+  }
+
+  .product-details h2 {
+      font-size: 20px;
+  }
+
+  .product-price {
+      font-size: 20px;
+  }
+}
+
+/* Estilização do total */
+.total-price {
+  font-size: 36px;
+  margin: 20px 0;
+}

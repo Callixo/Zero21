@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(to bottom right, #ffffff, #a0a2a3, #3c3f41, #000000);
+    background-attachment: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+}
+
+.area-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 900px;
+    width: 100%;
+    padding: 25px 30px;
+    border-radius: 5px;
+}
+
+.area-login img {
+    width: 100%;
+}
+
+.login h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px #ffffff;
+    text-transform: uppercase;
+    color: rgb(0, 175, 239);
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #000000, #aaa9a9);
+    width: 700px;
+    height: 500px;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.login form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.password-container {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-image: url('../img/olho-aberto.png');
+    background-size: cover;
+    cursor: pointer;
+}
+
+#icon {
+    position: fixed;
+    display: block;
+    top: 50%;
+    right: 260px;
+    transform: translateY(-70%);
+    background: url(../img/olho-aberto.png);
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+#icon.hide {
+    background: url(../img/olho-fechado.png);
+    background-size: cover;
+}
+
+.login input {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff, #747575);
+    border: none;
+    height: 30px;
+    outline: none;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    padding: 20px;
+    width: 100%;
+}
+
+.login img {
+    width: 150px;
+    height: auto;
+}
+
+input::placeholder {
+    color: #000000ff;
+    font-size: 14px;
+
+}
+
+p {
+    color: #ffffff;
+}
+
+p a {
+    color: rgb(0, 175, 239);
+    text-decoration: none;
+}
+
+button {
+    width: 150px;
+    border-style: none;
+    background: linear-gradient(135deg, #999898, #181818);
+    padding: 10px;
+    color: #000000;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #181818, #999898);
+}
+
+button a {
+    text-decoration: none;
+    color: #000000;
+}
+
+button:hover a {
+    color: #000000;
+}
+
+/* Estilizando o botão para que seja clicável em toda a área */
+button[type="submit"] {
+    font-size: 20px;
+    background: linear-gradient(135deg, #8b8b8b, #000000);
+    border-radius: 15px;
+    padding: 1rem;
+    outline: none;
+    border: none;
+    margin-top: 1rem;
+    color: #fff;
+    cursor: pointer;
+    transition: .5s;
+    display: block;
+    /* Tornando o botão um elemento de bloco */
+    width: 100%;
+    /* Ocupando toda a largura disponível */
+    text-align: center;
+    /* Centralizando o texto */
+    text-decoration: none;
+    /* Removendo sublinhado padrão */
+}
+
+/* Estilo de hover */
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, #000000, #8b8b8b);
+}

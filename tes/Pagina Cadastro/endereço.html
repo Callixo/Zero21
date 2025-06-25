@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Tela de Casdatro</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/testeendereco.css">    
+    <script src="js/endereço.js" defer></script> 
+    <!-- <script src="../array-endereco.js" defer></script> -->
+</head>
+<body>
+    <div class="content">
+        <h1>Cadastro</h1>
+        <h2>Endereço</h2>
+        <form id="form" autocomplete="off" method="POST" action="../php/processa_endereco.php">
+                <div>
+                    <label for="cep">CEP</label>
+                    <input type="text" name="cep" placeholder="Digite seu Cep" class="inputs required" oninput="validarCPF(this)" required id="cep">
+                    <span class="span-required">Insira um CEP válido</span>
+                </div>
+                <div>
+                    <label for="rua">Rua</label>
+                    <input type="text" name="rua" placeholder="Digite o nome de sua Rua" class="inputs" required id="rua">
+                </div>
+                <div>
+                    <label for="complemento">Complemento</label>
+                    <input type="text" name="complemento" placeholder="Complemento" class="inputs" required id="complemento">
+                </div>
+                <div>
+                    <label for="bairro">Bairro</label>
+                    <input type="text" name="bairro" placeholder="Digite o nome de seu Bairro" class="inputs" required id="bairro">
+                </div>
+                <div>
+                    <label for="cidade">Cidade</label>
+                    <input type="text" name="cidade" placeholder="Digite o nome de sua Cidade" class="inputs" required id="cidade">
+                </div>
+                <div>
+                    <label for="estado">Estado</label>
+                    <input type="text" name="estado" placeholder="Digite seu Estado" class="inputs" required id="estado">
+                </div>
+                <center><div>
+                    <a href="Contatos.html"><button type="submit">Voltar</button></a>
+                    <a href="../Pagina login/Pag_login.html"><button type="submit" onclick="enviar()">Próximo</button></a>
+                </div></center>
+        </form>
+            <script>
+                const form = document.getElementById('form');
+                const campos = document.querySelectorAll('.required');
+                const spans = document.querySelectorAll('.span-required');
+                
+                form.addEventListener('submit', (event) => {
+                    let isValid = true;
+                    console.log("Validando formulário...");
+              
+                    // Executa todas as validações
+                    validarCPF(input);
+              
+                    campos.forEach((campo, index) => {
+                      if (!campo.checkValidity()) {
+                        setError(index);
+                        isValid = false;
+                      } else {
+                        setOK(index);
+                      }
+                    });
+              
+                    if (!isValid) {
+                      console.log("Formulário inválido.");
+                      event.preventDefault();
+                    } else {
+                      console.log("Formulário válido. Redirecionando...");
+                      // Redireciona para a próxima página
+                      window.location.href = "../Pagina login/Pag_login.html";
+                    }
+                  });
+                
+            function setError(index) {
+                campos[index].style.border = '2px solid #e63636';
+                spans[index].style.display = 'block';
+            }
+            function setOK(index){
+                campos[index].style.border = '';
+                spans[index].style.display = 'none';
+            }
+
+            function validarCPF(input) {
+                // Remove qualquer caracter que não seja número
+                input.value = input.value.replace(/\D/g, '');
+                if(campos[0].value.length < 8) {
+                    setError(0)
+                }
+                if(campos[0].value.length > 8) {
+                    setError(0)
+                }
+                if(campos[0].value.length == 8) {
+                    setOK(0)
+                }
+           }
+
+
+
+
+           function buscaCep(){
+    let cep = document.getElementById('cep').value;
+    if(cep !== ""){
+        let url = "https://brasilapi.com.br/api/cep/v1/" + cep;
+        let req = new XMLHttpRequest();
+        req.open('GET', url);
+        req.send();
+
+        //tratar a resposta da requisição
+        req.onload = function(){
+            if(req.status === 200){
+                let endereco = JSON.parse(req.response);
+                document.getElementById('rua').value = endereco.street
+                document.getElementById('bairro').value = endereco.neighborhood
+                document.getElementById('cidade').value = endereco.city
+                document.getElementById('estado').value = endereco.state
+            }
+            else if(req.status === 404){
+                alert('CEP Inválido')
+            }
+            else{
+                alert('Erro ao fazer a requisição')
+            }
+                    }
+                }
+            }
+
+            window.onload = function(){
+                let cep = document.getElementById('cep')
+                    cep.addEventListener('blur', buscaCep);
+                
+            }
+
+            </script>
+    </div>
+</body>
+</html>

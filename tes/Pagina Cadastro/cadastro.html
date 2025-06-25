@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Formulário</title>
+  <link href="css/teste.css" rel="stylesheet">
+  <!-- <script src="./js/arraycadastro.js"></script> -->
+</head>
+
+<body>
+  <div class="content">
+    <h1>Cadastro</h1>
+    <h2>Dados Pessoais</h2>
+    <form id="form" autocomplete="off" method="POST" action="../php/processa_cadastro.php">
+      <div>
+        <label for="nome_completo">Nome Completo</label>
+        <input type="text" name="nome_completo" id="nome_completo" placeholder="Digite Seu Nome Completo"
+          class="inputs required" oninput="nameValidate()" required>
+        <span class="span-required">Nome deve conter no mínimo 10 caracteres</span>
+      </div>
+      <div>
+        <label for="data_nascimento">Data de Nascimento</label>
+        <input type="date" name="data_nascimento" id="data_nascimento" class="inputs required" oninput="dataNasc()"
+          required>
+        <span class="span-required">Campo Obrigatório</span>
+      </div>
+      <div>
+        <label for="nome_materno">Nome Materno</label>
+        <input id="nome_materno" type="text" name="nome_materno" placeholder="Qual Nome de sua Mãe"
+          class="inputs required" oninput="namemotherValidate()" required>
+        <span class="span-required">Nome deve conter no mínimo 8 caracteres</span>
+      </div>
+      <div>
+        <label for="cpf">CPF</label>
+        <input type="text" name="cpf" placeholder="Digite seu CPF" id="cpf" class="inputs required"
+          oninput="validarCPF(this)" required>
+        <span class="span-required">Deve conter somente 11 caracteres numéricos</span>
+      </div>
+      <p>Gênero:</p>
+      <div class="box-select">
+        <select id="genero" name="genero" class="inputs required" required>
+          <option value="masculino">Masculino</option>
+          <option value="feminino">Feminino</option>
+          <option value="outro">Outro</option>
+          <option value="Prefiro não Falar">Prefiro Não Falar</option>
+        </select>
+      </div>
+      <button type="submit" onclick="enviar()">Próximo</button>
+    </form>
+  </div>
+  <script>
+    const form = document.getElementById('form');
+    const campos = document.querySelectorAll('.required');
+    const spans = document.querySelectorAll('.span-required');
+
+    form.addEventListener('submit', (event) => {
+      let isValid = true;
+      console.log("Validando formulário...");
+
+      // Executa todas as validações
+      nameValidate();
+      dataNasc();
+      namemotherValidate();
+      validarCPF(document.getElementById('cpf'));
+
+      campos.forEach((campo, index) => {
+        if (!campo.checkValidity()) {
+          setError(index);
+          isValid = false;
+        } else {
+          setOK(index);
+        }
+      });
+
+      if (!isValid) {
+        console.log("Formulário inválido.");
+        event.preventDefault();
+      } else {
+        console.log("Formulário válido. Redirecionando...");
+        // Redireciona para a próxima página
+        window.location.href = "Contatos.html";
+      }
+    });
+
+    function setError(index) {
+      campos[index].style.border = '2px solid #e63636';
+      spans[index].style.display = 'block';
+      console.log(`Erro no campo ${index}`);
+    }
+
+    function setOK(index) {
+      campos[index].style.border = '';
+      spans[index].style.display = 'none';
+      console.log(`Campo ${index} validado.`);
+    }
+
+    function nameValidate() {
+      if (campos[0].value.length < 10) {
+        setError(0);
+      } else {
+        setOK(0);
+      }
+    }
+
+    function dataNasc() {
+      if (campos[1].value === "") {
+        setError(1);
+      } else {
+        setOK(1);
+      }
+    }
+
+    function namemotherValidate() {
+      if (campos[2].value.length < 8) {
+        setError(2);
+      } else {
+        setOK(2);
+      }
+    }
+
+    function validarCPF(input) {
+      input.value = input.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+      input.value = input.value.replace(/(\d{3})(\d)/, '$1.$2'); // Coloca um ponto entre o terceiro e o quarto dígitos
+      input.value = input.value.replace(/(\d{3})(\d)/, '$1.$2'); // Coloca um ponto entre o terceiro e o quarto dígitos (segundo bloco)
+      input.value = input.value.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); // Coloca um hífen entre o penúltimo e o último dígitos
+      if (campos[3].value.length !== 14) {
+        setError(3);
+      } else {
+        setOK(3);
+      }
+    }
+  </script>
+</body>
+
+</html>

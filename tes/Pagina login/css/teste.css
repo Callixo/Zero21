@@ -1,0 +1,178 @@
+body {
+  font-family: 'Arial';
+  background: radial-gradient(#686767, 	#2c2c2c);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: linear-gradient(to bottom, #00afef, 	#006386);
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(to bottom, #006386, 	#00afef);
+}
+
+button a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.d-flex justify-content-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  min-width: 300px;
+}
+
+.area-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.logo-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.login h2{
+  color: #fff;
+  font-size: 60px;
+}
+
+h2{
+  text-align: center;
+  font-size: 50px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px #0084ff;
+}
+
+.logo1 {
+  width: 100%;
+  max-width: 450px;
+  font-size: 95px;
+  color: #00afef;
+  text-shadow: 3px 3px #fff;
+  
+}
+
+.logo1 span{
+  color: #000;
+  text-shadow: 3px 3px #fff;  
+}
+
+.login {
+  background-color: #2c2c2c;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px;
+  min-width: 400px;
+  margin: 20px;
+  box-sizing: border-box;
+}
+
+.password-container {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+form {
+  text-align: center;
+}
+
+form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+p{
+  color: #fff;
+}
+
+form p {
+  margin-top: 10px;  
+}
+
+form p a {
+  color: #0084ff;
+}
+
+form center button {
+  margin-top: 10px;
+}
+
+.login a.button {
+  display: inline-block;
+  background-color: #0084ff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.login a.button:hover {
+  background-color: #004c94;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .logo-container {
+    display: none;
+  }
+
+  .login {
+    padding: 15px;
+    width: 90%;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+  }
+
+  form input {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login {
+    padding: 10px;
+  }
+
+  form input {
+    padding: 6px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 8px;
+  }
+}

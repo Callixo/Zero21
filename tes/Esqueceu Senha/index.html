@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esqueceu a Senha</title>
+  <link rel="stylesheet" href="css.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>Esqueceu a Senha?</h2>
+    <p>Confirme seu e-mail e data de nascimento</p>
+    <p>para solicitar a alteração da senha.</p><br>
+    <form id="recoveryForm" method="post" action="esqueceu_senha.php">
+      <input type="email" name="email" id="email" placeholder="Digite seu e-mail" required>
+      <input type="date" name="data_nascimento" id="data_nascimento" required>
+      <button type="submit">Confirmar</button>
+    </form>
+    <p id="message"></p>
+  </div>
+
+  <script>
+    // Adiciona um listener de evento ao formulário de recuperação
+    document.getElementById("recoveryForm").addEventListener("submit", function(event) {
+      // Evita que o formulário seja enviado automaticamente
+      event.preventDefault();
+
+      // Obtém os valores dos campos de e-mail e data de nascimento
+      var email = document.getElementById("email").value;
+      var dataNascimento = document.getElementById("data_nascimento").value;
+
+      // Verifica se o e-mail é válido
+      if (!isValidEmail(email)) {
+        alert("Por favor, insira um e-mail válido.");
+        return;
+      }
+
+      // Verifica se a data de nascimento é preenchida
+      if (!dataNascimento) {
+        alert("Por favor, insira a data de nascimento.");
+        return;
+      }
+
+      // Se a validação passar, o formulário é enviado
+      this.submit();
+    });
+
+    // Função para validar o formato do e-mail
+    function isValidEmail(email) {
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+  </script>
+</body>
+
+</html>

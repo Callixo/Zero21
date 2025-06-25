@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(to bottom right, #ffffff, #a0a2a3, #3c3f41, #000000);
+    background-attachment: fixed;
+    width: 100%;
+}
+
+h1 {
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+    margin-bottom: 20px;
+    text-shadow: 5px 5px 7px #000000;
+    text-transform: uppercase;
+    color: #f3f3f3;
+}
+
+h1::before,
+h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 50px;
+    background: linear-gradient(135deg, #aaa9a9, #3f3e3e, #f50000);
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 500;
+    position: relative;
+    margin-bottom: 20px;
+    text-shadow: 5px 5px 7px #000000;
+    text-transform: uppercase;
+    color: #f3f3f3;
+}
+
+
+.content {
+    max-width: 700px;
+    width: 100%;
+    background: linear-gradient(135deg, #474747, #3c3f41, #8b8b8b, #4b4a4a);
+    padding: 25px 30px;
+    border-radius: 5px;
+}
+
+.content form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.inputs {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    color: #000000;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #c9caca, #535353);
+}
+
+.inputs:focus {
+    border-color: #293b42;
+}
+
+label,
+p {
+    color: #fff;
+    font-size: 18px;
+    text-shadow: 5px 5px 7px #000000;
+}
+
+::placeholder {
+    color: #000000;
+}
+
+.span-required {
+    display: none;
+    color: red;
+    font-size: 12px;
+}
+
+.box-select {
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: bold;
+    gap: 1rem;
+}
+
+button[type="submit"] {
+    font-size: 20px;
+    background: linear-gradient(135deg, #8b8b8b, #000000);
+    border-radius: 15px;
+    padding: 1rem;
+    outline: none;
+    border: none;
+    margin-top: 1rem;
+    color: #fff;
+    cursor: pointer;
+    transition: .5s;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, #000000, #8b8b8b);
+}
+
+@media screen and (max-width: 576px) {
+    .box-select {
+        flex-direction: column;
+        gap: 5px;
+    }
+}

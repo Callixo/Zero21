@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redefinir Senha</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<style>
+    label {
+        color: #fff;
+        font-size: 20px;
+        margin-bottom: 10px;
+
+    }
+
+    input[type='password'] {
+        padding: 5px;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    input[type='submit'] {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        box-sizing: border-box;
+        margin-top: 20px;
+    }
+
+    input[type='submit']:hover {
+        background-color: #0056b3;
+    }
+
+    p {
+        margin: 10px 0;
+    }
+
+    span.span-required {
+        display: none;
+        color: #e63636;
+        font-size: 12px;
+      }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+        .container {
+            padding: 15px;
+        }
+
+        input[type='password'],
+        input[type='submit'] {
+            padding: 8px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .container {
+            padding: 10px;
+        }
+
+        input[type='password'],
+        input[type='submit'] {
+            padding: 6px;
+        }
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h2>Redefinir Senha</h2>
+        <form id="redefinirSenhaForm" method="post" action="senha.php">
+            <label for="nova_senha">Nova Senha:</label><br>
+            <input type="password" id="nova_senha" name="nova_senha" class="inputs required"
+                oninput="mainPasswordValidate1()" required>
+            <span class="span-required">Senha deve conter 8 caracteres alfabéticos</span><br>
+            <label for="confirmar_senha">Confirmar Senha:</label><br>
+            <input type="password" id="confirmar_senha" name="confirmar_senha" class="inputs required"
+                oninput="mainPasswordValidate2()" required>
+            <span class="span-required">Senha deve ser iguais</span><br>
+            <!-- Adicione um campo oculto para enviar o e-mail -->
+            <input type="hidden" name="email" value="<?php echo $_SESSION['email']; ?>">
+            <input type="submit" value="Redefinir Senha">
+        </form>
+        <p id="message"></p>
+    </div>
+
+
+    <script>
+        const form = document.getElementById('redefinirSenhaForm');
+        const campos = document.querySelectorAll('.required');
+        const spans = document.querySelectorAll('.span-required');
+        const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+
+        function setError(index) {
+            spans[index].style.display = 'inline';
+        }
+        
+        function setOK(index) {
+            spans[index].style.display = 'none';
+        }
+
+        function mainPasswordValidate1() {
+            const password = campos[0].value;
+            const regex = /^[a-zA-Z]{8}$/; // Alterado para permitir 8 ou mais caracteres
+            if (!regex.test(password)) {
+                setError(0);
+            } else {
+                setOK(0);
+                mainPasswordValidate2();
+            }
+        }        
+
+        function mainPasswordValidate2() {
+            if (campos[0].value == campos[1].value && campos[1].value.length >= 8) {
+                setOK(1)
+            }
+            else {
+                setError(1)
+            }
+        }
+    </script>
+</body>
+
+</html>
